@@ -66,16 +66,17 @@ const NewListing = React.createClass({
       <div className="error modal-form-error">{ errorMessage }</div>
     );
 
+    let { hideModal } = this.props;
+
+
+
     return (
-
-
-
-
-
-      <div className="newlisting">
-        <h1>New Listing</h1>
+     <span>
+          <a href="#" onClick={ hideModal } className="modal-close">
+            <span className="fa fa-close"></span>
+          </a>
         <form onSubmit={ this.submitListing } className="modal-form">
-          <label htmlFor="newlisting-listing_id">Listing ID</label>
+          <label htmlFor="newlisting-listing_id"></label>
           <input
             type="text"
             className={ listing_idInputCx }
@@ -89,8 +90,14 @@ const NewListing = React.createClass({
           </button>
         </form>
         { error }
-      </div>
+    </span>
     );
+
+
+
+
+
+
   }
 });
 
