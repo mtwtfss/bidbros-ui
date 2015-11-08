@@ -41,7 +41,7 @@ module.exports = {
     new webpack.NoErrorsPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
-      title: 'react-template',
+      title: 'bidbros-ui',
       template: './src/index.html',
       scriptFilename: 'app.js'
     })

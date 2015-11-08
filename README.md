@@ -1,8 +1,8 @@
-# React Template
+# Bid Bros UI
 
 ## About
 
-This is a template for React applications.
+This is the UI for Bid Bros
 
 ## Setup
 

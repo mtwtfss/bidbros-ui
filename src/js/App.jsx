@@ -124,7 +124,7 @@ let App = React.createClass({
       <div className="wrapper full-height">
         <header className="header cf">
           <div className="float-left">
-            <Link to="/" className="menu-title">React Template</Link>
+            <Link to="/" className="menu-title">Bid Bros</Link>
           </div>
           <div className="float-right">
             { user ? <UserSettings user={ user } /> : (loading ? null : <LoginLinks />) }

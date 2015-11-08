@@ -33,7 +33,7 @@ module.exports = {
     plugins: [
         new webpack.NoErrorsPlugin(),
         new HtmlWebpackPlugin({
-            title: 'react-template',
+            title: 'bidbros-ui',
             template: './src/index.html',
             scriptFilename: 'app.min.js'
         })

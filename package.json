@@ -1,13 +1,13 @@
 {
-  "name": "react-template",
+  "name": "bidbros-ui",
   "author": "mtwtfss",
   "license": "LicenseRef-LICENSE",
   "private": true,
   "version": "0.1.0",
-  "description": "React Template",
+  "description": "Bid Bros UI",
   "repository": {
     "type": "git",
-    "url": "https://bitbucket.org/mtwtfss/react-template.git"
+    "url": "https://github.com/mtwtfss/bidbros-ui.git"
   },
   "dependencies": {
     "babel-runtime": "^5.8.24",
