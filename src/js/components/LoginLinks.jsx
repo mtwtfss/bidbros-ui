@@ -7,8 +7,10 @@ const LoginLinks = React.createClass({
   render() {
     return (
       <span className="login-links">
-        <a onClick={ () => Actions.showModal('login') }>Sign In</a>
-        <a onClick={ () => Actions.showModal('register') } className="register-link">Register</a>
+        <a onClick={ () => Actions.showModal('sellerlogin') }>Seller Sign In</a>
+        <a onClick={ () => Actions.showModal('sellerregister') } className="register-link">Seller Register</a>
+        <a onClick={ () => Actions.showModal('agentlogin') }>Agent Sign In</a>
+        <a onClick={ () => Actions.showModal('agentregister') } className="register-link">Agent Register</a>
       </span>
     );
   }

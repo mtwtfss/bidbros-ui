@@ -38,7 +38,7 @@ const AgentStore = Reflux.createStore({
     });
   },
 
-  onLogin(loginData) {
+  onAgentLogin(loginData) {
     var _this = this;
     API.agentLogin(loginData).then(function(agent) {
       data = { agents: data.agents, currentAgent: agent.data };
@@ -49,7 +49,7 @@ const AgentStore = Reflux.createStore({
     });
   },
 
-  onLogout() {
+  onAgentLogout() {
     data = { agents: data.agents, currentAgent: null };
     this.trigger(data);
   },

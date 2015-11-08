@@ -5,9 +5,9 @@ import API from '../util/api';
 
 const Actions = Reflux.createActions([
   // agent actions
-  'login',
-  'logout',
-  'register',
+  'agentLogin',
+  'agentLogout',
+  'agentRegister',
   'fetchAgent',
   'fetchAgents',
   // bid actions
@@ -15,6 +15,17 @@ const Actions = Reflux.createActions([
   'fetchBids',
   'submitBid',
   'expandBidRange',
+  // listing actions
+  'fetchListing',
+  'fetchListings',
+  'submitBid',
+  'expandBidRange',
+  // seller actions
+  'sellerLogin',
+  'sellerLogout',
+  'sellerRegister',
+  'fetchAgent',
+  'fetchAgents',
   // modal actions
   'showModal',
   'hideModal',

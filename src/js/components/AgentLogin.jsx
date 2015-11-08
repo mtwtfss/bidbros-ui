@@ -4,7 +4,7 @@ import Actions from '../actions/Actions';
 import Spinner from '../components/Spinner';
 import React, { PropTypes } from 'react/addons';
 
-const Login = React.createClass({
+const AgentLogin = React.createClass({
   propTypes: {
     user: PropTypes.object,
     errorMessage: PropTypes.string
@@ -43,7 +43,7 @@ const Login = React.createClass({
       submitted: true
     });
 
-    Actions.login({
+    Actions.agentLogin({
       agent_id: agent_id
     });
   },
@@ -86,4 +86,4 @@ const Login = React.createClass({
   }
 });
 
-export default Login;
+export default AgentLogin;

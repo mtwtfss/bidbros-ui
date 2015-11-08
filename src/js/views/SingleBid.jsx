@@ -5,7 +5,7 @@ import React from 'react/addons';
 import Actions from '../actions/Actions';
 import { Navigation, TransitionHook } from 'react-router';
 
-import SingleStore from '../stores/SingleStore';
+import SingleBidStore from '../stores/SingleBidStore';
 import BidsStore from '../stores/BidsStore';
 import AgentStore from '../stores/AgentStore';
 import Spinner from '../components/Spinner';
@@ -20,11 +20,11 @@ const SingleBid = React.createClass({
     Navigation,
     TransitionHook,
     Reflux.listenTo(BidsStore, 'newBid'),
-    Reflux.listenTo(SingleStore, 'updateBid')
+    Reflux.listenTo(SingleBidStore, 'updateBid')
   ],
 
   getInitialState() {
-    let bidData = SingleStore.getDefaultData();
+    let bidData = SingleBidStore.getDefaultData();
 
     return {
       loading: true,

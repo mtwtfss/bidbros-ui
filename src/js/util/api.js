@@ -35,7 +35,7 @@ module.exports = {
   sellerLogin: function(loginData) {
     return $.ajax({
       type: 'POST',
-      data: { user: loginData },
+      data: loginData,
       url: 'http://localhost:9292/seller_login',
       xhrFields: { withCredentials: true },
       crossDomain: true,
