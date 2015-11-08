@@ -153,8 +153,8 @@ let App = React.createClass({
     let { agent, listing, seller, modal, loading } = this.state;
 
     var newListingButton = (
-      <a className="newlisting-link" onClick={ this.newListing }>
-        <i className="fa fa-plus-square-o"></i>
+      <a className="newlisting button special" onClick={ this.newListing }>
+        <i className=""></i>
         <span className="sr-only">New Listing</span>
       </a>
     );

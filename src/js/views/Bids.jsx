@@ -73,6 +73,12 @@ const Bids = React.createClass({
     }
 
     return (
+
+
+
+                                <section id="main" className="container">
+
+                                        <section className="box special">
       <div className="content full-width">
         <div className="bids">
           { this.state.loading ? <Spinner /> : bids }
@@ -86,6 +92,10 @@ const Bids = React.createClass({
           ) : null
         }
       </div>
+
+                                        </section>
+				</section>
+
     );
   }
 });

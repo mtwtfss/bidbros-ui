@@ -67,6 +67,11 @@ const NewListing = React.createClass({
     );
 
     return (
+
+
+
+
+
       <div className="newlisting">
         <h1>New Listing</h1>
         <form onSubmit={ this.submitListing } className="modal-form">

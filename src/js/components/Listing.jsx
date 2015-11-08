@@ -36,7 +36,7 @@ const Listing = React.createClass({
             <span className="listing-info-item">
               { timeAgo(listing.created_at) }
             </span>
-            <a className="newlisting-link" onClick={ this.newBid }>
+            <a className="button special" onClick={ this.newBid }>
               <i className="fa fa-plus-square-o"></i>
               <span className="sr-only">Bid on this listing</span>
             </a>

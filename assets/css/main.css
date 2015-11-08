@@ -3841,3 +3841,10 @@ top: 0px;
     background: #00d9ff;
 }
 
+.newlisting {
+   position: fixed;
+   top: 80px;
+   right: 20px;
+
+}
+
