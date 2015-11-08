@@ -10,8 +10,7 @@ import AgentStore from './stores/AgentStore';
 import SellerStore from './stores/SellerStore';
 import ModalStore from './stores/ModalStore';
 
-import Bids from './views/Bids';
-import Listings from './views/Listings';
+import Base from './views/Base';
 import Modal from './components/Modal';
 import AgentLogin from './components/AgentLogin';
 import SellerLogin from './components/SellerLogin';
@@ -147,14 +146,6 @@ let App = React.createClass({
   render() {
     let { agent, seller, modal, loading } = this.state;
 
-    var content;
-
-    if (agent) {
-      content = <Listings />;
-    } else if (seller) {
-      content = <Bids />;
-    }
-
     return (
       <div className="wrapper full-height">
         <header className="header cf">
@@ -172,7 +163,7 @@ let App = React.createClass({
         </header>
 
         <main id="content" className="full-height inner">
-          { this.props.children || content }
+          <Base agent={ agent } seller={ seller } />
         </main>
 
         { this.getModalComponent(modal) }
