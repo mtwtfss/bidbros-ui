@@ -34,7 +34,7 @@ const Bid = React.createClass({
     <td className="commission-value"> { bid.commission} </td>
   </tr>
   <tr>
-    <td className="review"> Reviews: </td>
+    <td className="review"> Rating: {bid.agent.yelp_rating}/5 ({bid.agent.review_count} reviews) </td>
     <td className="review-value"></td>
   </tr>
   <tr>
