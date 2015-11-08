@@ -3,6 +3,7 @@
 import Reflux from 'reflux';
 import API from '../util/api';
 import Actions from '../actions/Actions';
+import SellerStore from './SellerStore';
 
 let bidRangeStep = 10;
 
@@ -16,7 +17,7 @@ const BidsStore = Reflux.createStore({
 
   onFetchBids() {
     var _this = this;
-    API.fetchData('bids').then(function(bidsData) {
+    API.fetchData('bids?seller_id=' + SellerStore.getCurrentSeller().id).then(function(bidsData) {
       data.bids = bidsData.data;
       _this.trigger(data);
     }).fail(function() {
