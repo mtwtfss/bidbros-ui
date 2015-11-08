@@ -3,14 +3,14 @@
 import React from 'react/addons';
 import Actions from '../actions/Actions';
 
-const UserSettings = React.createClass({
+const AgentSettings = React.createClass({
   propTypes: {
     agent: React.PropTypes.object
   },
 
 
   logout() {
-    Actions.logout();
+    Actions.agentLogout();
   },
 
   render() {
@@ -23,4 +23,4 @@ const UserSettings = React.createClass({
   }
 });
 
-export default UserSettings;
+export default AgentSettings;
