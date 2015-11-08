@@ -12,7 +12,7 @@ const Base = React.createClass({
     } else if (this.props.seller) {
       return <Bids />;
     } else {
-      return <div className="content full-width">Please login</div>;
+      return <div className="content full-width"></div>;
     }
   }
 });

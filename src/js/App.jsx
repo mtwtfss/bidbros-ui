@@ -155,10 +155,6 @@ let App = React.createClass({
             { agent ? <AgentSettings agent={ agent } /> : null }
             { seller ? <SellerSettings seller={ seller } /> : null }
             { (!agent && !seller) ? (loading ? null : <LoginLinks />) : null }
-            <a className="newbid-link" onClick={ this.newBid }>
-              <i className="fa fa-plus-square-o"></i>
-              <span className="sr-only">New Bid</span>
-            </a>
           </div>
         </header>
 
