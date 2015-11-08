@@ -33,7 +33,6 @@ const Modal = React.createClass({
         <div className="modal-inner" onClick={ (e) => e.stopPropagation() }>
           <a href="#" onClick={ hideModal } className="modal-close">
             <span className="fa fa-close"></span>
-            <span className="sr-only">Hide Modal</span>
           </a>
           { this.props.children }
         </div>

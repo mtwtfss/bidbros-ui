@@ -61,9 +61,9 @@ const SellerLogin = React.createClass({
 
     return (
       <div className="login">
-        <h1>Login</h1>
+        <h1> </h1>
         <form onSubmit={ this.login } className="modal-form">
-          <label htmlFor="email">Email</label>
+          <label htmlFor="email"></label>
           <input
             type="text"
             placeholder="Email"

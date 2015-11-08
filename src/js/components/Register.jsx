@@ -77,9 +77,9 @@ const Register = React.createClass({
 
     return (
       <div className="register">
-        <h1>Register</h1>
+        <h1></h1>
         <form onSubmit={ this.registerUser } className="modal-form">
-          <label htmlFor="username">Username</label>
+          <label htmlFor="username"></label>
           <input
             type="text"
             placeholder="Username"
@@ -87,7 +87,7 @@ const Register = React.createClass({
             value={ username }
             onChange={ (e) => this.setState({ username: e.target.value.trim() }) }
           />
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password"></label>
           <input
             type="password"
             placeholder="Password"

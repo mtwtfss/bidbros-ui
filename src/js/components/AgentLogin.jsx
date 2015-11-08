@@ -61,9 +61,9 @@ const AgentLogin = React.createClass({
 
     return (
       <div className="login">
-        <h1>Login</h1>
+        <h1></h1>
         <form onSubmit={ this.login } className="modal-form">
-          <label htmlFor="agent_id">Agent ID</label>
+          <label htmlFor="agent_id"></label>
           <input
             type="text"
             placeholder="Agent ID"
