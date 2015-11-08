@@ -49,6 +49,17 @@ const AgentStore = Reflux.createStore({
     });
   },
 
+  onRegisterAgent(agentData) {
+    var _this = this;
+    API.registerAgent(agentData).then(function(agent) {
+      data = { agents: data.agents, currentAgent: agent.data };
+      _this.trigger(data);
+      Actions.nextModal();
+    }).fail(function(error) {
+      Actions.modalError(error.responseText);
+    });
+  },
+
   onAgentLogout() {
     data = { agents: data.agents, currentAgent: null };
     this.trigger(data);

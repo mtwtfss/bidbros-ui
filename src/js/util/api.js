@@ -41,5 +41,27 @@ module.exports = {
       crossDomain: true,
       cache: false
     }).promise();
+  },
+
+  registerSeller: function(sellerData) {
+    return $.ajax({
+      type: 'POST',
+      data: sellerData,
+      url: 'http://localhost:9292/seller',
+      xhrFields: { withCredentials: true },
+      crossDomain: true,
+      cache: false
+    }).promise();
+  },
+
+  registerAgent: function(agentData) {
+    return $.ajax({
+      type: 'POST',
+      data: agentData,
+      url: 'http://localhost:9292/agent',
+      xhrFields: { withCredentials: true },
+      crossDomain: true,
+      cache: false
+    }).promise();
   }
 };

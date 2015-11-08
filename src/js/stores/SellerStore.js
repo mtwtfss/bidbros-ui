@@ -49,6 +49,17 @@ const SellerStore = Reflux.createStore({
     });
   },
 
+  onRegisterSeller(sellerData) {
+    var _this = this;
+    API.registerSeller(sellerData).then(function(seller) {
+      data = { sellers: data.sellers, currentSeller: seller.data };
+      _this.trigger(data);
+      Actions.nextModal();
+    }).fail(function(error) {
+      Actions.modalError(error.responseText);
+    });
+  },
+
   onSellerLogout() {
     data = { sellers: data.sellers, currentSeller: null };
     this.trigger(data);

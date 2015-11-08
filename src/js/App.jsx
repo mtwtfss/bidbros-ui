@@ -15,7 +15,8 @@ import Base from './views/Base';
 import Modal from './components/Modal';
 import AgentLogin from './components/AgentLogin';
 import SellerLogin from './components/SellerLogin';
-import Register from './components/Register';
+import AgentRegister from './components/AgentRegister';
+import SellerRegister from './components/SellerRegister';
 import NewListing from './components/NewListing';
 import NewBid from './components/NewBid';
 import LoginLinks from './components/LoginLinks';
@@ -129,9 +130,9 @@ let App = React.createClass({
 
     switch (modal.type) {
       case 'agentregister':
-        modalInner = <Register { ...modalProps } />; break;
+        modalInner = <AgentRegister { ...modalProps } />; break;
       case 'sellerregister':
-        modalInner = <Register { ...modalProps } />; break;
+        modalInner = <SellerRegister { ...modalProps } />; break;
       case 'agentlogin':
         modalInner = <AgentLogin { ...modalProps } />; break;
       case 'sellerlogin':

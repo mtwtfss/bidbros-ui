@@ -4,7 +4,7 @@ import React, { PropTypes } from 'react/addons';
 import Actions from '../actions/Actions';
 import Spinner from '../components/Spinner';
 
-const Register = React.createClass({
+const AgentRegister = React.createClass({
   propTypes: {
     user: PropTypes.object,
     errorMessage: PropTypes.string
@@ -13,13 +13,13 @@ const Register = React.createClass({
   getInitialState() {
     return {
       submitted: false,
-      username: '',
-      password: ''
+      agentId: '',
+      yelpUrl: ''
     };
   },
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.user !== this.props.user) {
+    if (nextProps.agent !== this.props.agent) {
       // clear form if user prop changes (i.e. logged in)
       this.clearForm();
     }
@@ -31,24 +31,20 @@ const Register = React.createClass({
   },
 
   clearForm() {
-    let { username, password } = this.state;
+    let { agentId, yelpUrl } = this.state;
 
     this.setState({
-      username: '',
-      password: ''
+      agentId: '',
+      yelpUrl: ''
     });
   },
 
-  registerUser(e) {
+  registerAgent(e) {
     e.preventDefault();
-    let { username, password } = this.state;
+    let { agentId, yelpUrl } = this.state;
 
-    if (!username) {
-      return Actions.modalError('You must enter a username');
-    } else if (!password) {
-      return Actions.modalError('You must enter a password');
-    } else if (password.length < 6) {
-      return Actions.modalError('Your password is too short');
+    if (!agentId) {
+      return Actions.modalError('You must enter your full Agent ID');
     }
 
     this.setState({
@@ -56,18 +52,18 @@ const Register = React.createClass({
     });
 
     let loginData = {
-      username: username,
-      password: password
+      agent_id: agentId,
+      yelp_url: yelpUrl
     };
 
-    Actions.register(username, loginData);
+    Actions.registerAgent(loginData);
   },
 
   render() {
     let {
       submitted,
-      username,
-      password
+      agentId,
+      yelpUrl
     } = this.state;
     let { errorMessage } = this.props;
 
@@ -76,24 +72,24 @@ const Register = React.createClass({
     );
 
     return (
-      <div className="register">
+      <div className="register-agent">
         <h1></h1>
-        <form onSubmit={ this.registerUser } className="modal-form">
-          <label htmlFor="username"></label>
+        <form onSubmit={ this.registerAgent } className="modal-form">
+          <label htmlFor="agentId"></label>
           <input
             type="text"
-            placeholder="Username"
-            id="username"
-            value={ username }
-            onChange={ (e) => this.setState({ username: e.target.value.trim() }) }
+            placeholder="Agent ID"
+            id="agent-id"
+            value={ agentId }
+            onChange={ (e) => this.setState({ agentId: e.target.value.trim() }) }
           />
-          <label htmlFor="password"></label>
+          <label htmlFor="yelp-url"></label>
           <input
-            type="password"
-            placeholder="Password"
-            id="password"
-            value={ password }
-            onChange={ (e) => this.setState({ password: e.target.value }) }
+            type="text"
+            placeholder="Yelp URL"
+            id="yelp-url"
+            value={ yelpUrl }
+            onChange={ (e) => this.setState({ yelpUrl: e.target.value.trim() }) }
           />
           <button type="submit" className="button button-primary" disabled={ submitted }>
             { submitted ? <Spinner /> : 'Register' }
@@ -105,4 +101,4 @@ const Register = React.createClass({
   }
 });
 
-export default Register;
+export default AgentRegister;

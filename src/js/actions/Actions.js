@@ -7,7 +7,7 @@ const Actions = Reflux.createActions([
   // agent actions
   'agentLogin',
   'agentLogout',
-  'agentRegister',
+  'registerAgent',
   'fetchAgent',
   'fetchAgents',
   // bid actions
@@ -24,7 +24,7 @@ const Actions = Reflux.createActions([
   // seller actions
   'sellerLogin',
   'sellerLogout',
-  'sellerRegister',
+  'registerSeller',
   'fetchAgent',
   'fetchAgents',
   // modal actions

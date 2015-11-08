@@ -13,7 +13,7 @@ const AgentLogin = React.createClass({
   getInitialState() {
     return {
       submitted: false,
-      agent_id: ''
+      agentId: ''
     };
   },
 
@@ -31,27 +31,27 @@ const AgentLogin = React.createClass({
 
   clearForm() {
     this.setState({
-      agent_id: '',
+      agentId: '',
     });
   },
 
   login(e) {
     e.preventDefault();
-    let { agent_id } = this.state;
+    let { agentId } = this.state;
 
     this.setState({
       submitted: true
     });
 
     Actions.agentLogin({
-      agent_id: agent_id
+      agent_id: agentId
     });
   },
 
   render() {
     let {
       submitted,
-      agent_id
+      agentId
     } = this.state;
     let { errorMessage } = this.props;
 
@@ -63,13 +63,13 @@ const AgentLogin = React.createClass({
       <div className="login">
         <h1></h1>
         <form onSubmit={ this.login } className="modal-form">
-          <label htmlFor="agent_id"></label>
+          <label htmlFor="agent-id"></label>
           <input
             type="text"
             placeholder="Agent ID"
-            id="agent_id"
-            value={ agent_id }
-            onChange={ (e) => this.setState({ agent_id: e.target.value.trim() }) }
+            id="agent-id"
+            value={ agentId }
+            onChange={ (e) => this.setState({ agentId: e.target.value.trim() }) }
           />
           <input
             type="text"
