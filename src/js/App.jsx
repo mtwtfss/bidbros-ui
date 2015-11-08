@@ -6,7 +6,7 @@ import { Link } from 'react-router';
 
 import Actions from './actions/Actions';
 
-import UserStore from './stores/UserStore';
+import AgentStore from './stores/AgentStore';
 import ModalStore from './stores/ModalStore';
 
 import Bids from './views/Bids';
@@ -15,7 +15,7 @@ import Login from './components/Login';
 import Register from './components/Register';
 import NewBid from './components/NewBid';
 import LoginLinks from './components/LoginLinks';
-import UserSettings from './components/UserSettings';
+import AgentSettings from './components/AgentSettings';
 
 import Colors from 'material-ui/lib/styles/colors';
 import ThemeManager from 'material-ui/lib/styles/theme-manager';
@@ -32,15 +32,15 @@ let App = React.createClass({
 
   mixins: [
     Reflux.listenTo(ModalStore, 'onModalUpdate'),
-    Reflux.listenTo(UserStore, 'updateCurrentUser')
+    Reflux.listenTo(AgentStore, 'updateCurrentAgent')
   ],
 
   getInitialState() {
-    let userData = UserStore.getDefaultData();
+    let agentData = AgentStore.getDefaultData();
 
     return {
       loading: true,
-      user: userData.currentUser,
+      agent: agentData.currentAgent,
       modal: ModalStore.getDefaultData(),
       muiTheme: ThemeManager.getMuiTheme(LightRawTheme)
     };
@@ -53,8 +53,8 @@ let App = React.createClass({
   },
 
   componentWillMount() {
-    Actions.fetchUser();
-    Actions.fetchUsers();
+    Actions.fetchAgent();
+    Actions.fetchAgents();
 
     let newMuiTheme = ThemeManager.modifyRawThemePalette(this.state.muiTheme, {
       accent1Color: Colors.deepOrange500
@@ -63,11 +63,11 @@ let App = React.createClass({
     this.setState({muiTheme: newMuiTheme});
   },
 
-  updateCurrentUser(userData) {
+  updateCurrentAgent(agentData) {
     this.setState({
       loading: false,
       showModal: false,
-      user: userData.currentUser
+      agent: agentData.currentAgent
     });
   },
 
@@ -83,7 +83,7 @@ let App = React.createClass({
   },
 
   newBid() {
-    if (this.state.user) {
+    if (this.state.agent) {
       Actions.showModal('newbid');
     } else {
       Actions.showModal('login', 'You have to login to do that', ['newbid']);
@@ -97,7 +97,7 @@ let App = React.createClass({
 
     let modalInner;
     let modalProps = {
-      user: this.state.user,
+      agent: this.state.agent,
       errorMessage: modal.errorMessage
     };
 
@@ -118,7 +118,7 @@ let App = React.createClass({
   },
 
   render() {
-    let { user, modal, loading } = this.state;
+    let { agent, modal, loading } = this.state;
 
     return (
       <div className="wrapper full-height">
@@ -127,7 +127,7 @@ let App = React.createClass({
             <Link to="/" className="menu-title">Bid Bros</Link>
           </div>
           <div className="float-right">
-            { user ? <UserSettings user={ user } /> : (loading ? null : <LoginLinks />) }
+            { agent ? <AgentSettings agent={ agent } /> : (loading ? null : <LoginLinks />) }
             <a className="newbid-link" onClick={ this.newBid }>
               <i className="fa fa-plus-square-o"></i>
               <span className="sr-only">New Bid</span>

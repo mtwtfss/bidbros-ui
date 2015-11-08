@@ -12,12 +12,12 @@ import timeAgo from '../util/timeAgo';
 
 const Bid = React.createClass({
   propTypes: {
-    user: React.PropTypes.object,
+    agent: React.PropTypes.object,
     bid: React.PropTypes.object
   },
 
   render() {
-    let user = this.props.user;
+    let agent = this.props.agent;
     let bid = this.props.bid;
 
     if (bid.isDeleted) {
@@ -42,7 +42,7 @@ const Bid = React.createClass({
         <div className="bid-info">
           <div className="bided-by">
             <span className="bid-info-item">
-              <Link to={ `/user/${bid.user_id}` }>{ bid.username }</Link>
+              <Link to={ `/agent/${bid.agent_id}` }>{ bid.agentname }</Link>
             </span>
             <span className="bid-info-item">
               { timeAgo(bid.created_at) }

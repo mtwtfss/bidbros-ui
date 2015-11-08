@@ -5,7 +5,7 @@ import Actions from '../actions/Actions';
 
 const UserSettings = React.createClass({
   propTypes: {
-    user: React.PropTypes.object
+    agent: React.PropTypes.object
   },
 
 
@@ -16,7 +16,7 @@ const UserSettings = React.createClass({
   render() {
     return (
       <span className="user-settings">
-        <span>{ this.props.user.username }</span>
+        <span>{ this.props.agent.agent_id }</span>
         <a onClick={ this.logout }>Logout</a>
       </span>
     );

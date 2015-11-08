@@ -4,12 +4,12 @@ import Reflux from 'reflux';
 import API from '../util/api';
 
 const Actions = Reflux.createActions([
-  // user actions
+  // agent actions
   'login',
   'logout',
   'register',
-  'fetchUser',
-  'fetchUsers',
+  'fetchAgent',
+  'fetchAgents',
   // bid actions
   'fetchBid',
   'fetchBids',

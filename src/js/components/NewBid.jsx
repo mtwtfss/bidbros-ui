@@ -10,7 +10,7 @@ import Spinner from '../components/Spinner';
 
 const NewBid = React.createClass({
   propTypes: {
-    user: React.PropTypes.object,
+    agent: React.PropTypes.object,
     errorMessage: React.PropTypes.string
   },
 
@@ -30,7 +30,7 @@ const NewBid = React.createClass({
     e.preventDefault();
 
     let { title, link } = this.state;
-    let { user } = this.props;
+    let { agent } = this.props;
 
     if (!title) {
       this.setState({
@@ -53,7 +53,7 @@ const NewBid = React.createClass({
     let bid = {
       title: title.trim(),
       url: link,
-      user_id: user.id //eslint-disable-line camelcase
+      agent_id: agent.id //eslint-disable-line camelcase
     };
 
     Actions.submitBid(bid);

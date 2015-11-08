@@ -7,7 +7,7 @@ import { Navigation, TransitionHook } from 'react-router';
 
 import SingleStore from '../stores/SingleStore';
 import BidsStore from '../stores/BidsStore';
-import UserStore from '../stores/UserStore';
+import AgentStore from '../stores/AgentStore';
 import Spinner from '../components/Spinner';
 import Bid from '../components/Bid';
 
@@ -51,11 +51,11 @@ const SingleBid = React.createClass({
       return;
     }
 
-    var user = UserStore.getUser(bid.user_id);
-    if (user) {
-      bid.username = user.username;
+    var agent = AgentStore.getAgent(bid.agent_id);
+    if (agent) {
+      bid.agentname = agent.agentname;
     } else {
-      bid.username = 'User ' + bid.user_id;
+      bid.agentname = 'Agent ' + bid.agent_id;
     }
 
     this.setState({ bid: bid, loading: false });

@@ -6,7 +6,7 @@ import Actions from '../actions/Actions';
 import { Navigation, TransitionHook } from 'react-router';
 
 import BidsStore from '../stores/BidsStore';
-import UserStore from '../stores/UserStore';
+import AgentStore from '../stores/AgentStore';
 import Spinner from '../components/Spinner';
 import Bid from '../components/Bid';
 
@@ -38,14 +38,14 @@ const Bids = React.createClass({
   routerWillLeave() {},
 
   updateBids(bidData) {
-    var users = UserStore.getUsers();
+    var agents = AgentStore.getAgents();
     bidData.bids.forEach(function(bid) {
-      var user = users[bid.user_id];
+      var agent = agents[bid.agent_id];
 
-      if (user) {
-        bid.username = users[bid.user_id].username;
+      if (agent) {
+        bid.agentname = agents[bid.agent_id].agentname;
       } else {
-        bid.username = 'User ' + bid.user_id;
+        bid.agentname = 'Agent ' + bid.agent_id;
       }
     });
 

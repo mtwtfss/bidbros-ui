@@ -13,8 +13,7 @@ const Login = React.createClass({
   getInitialState() {
     return {
       submitted: false,
-      username: '',
-      password: ''
+      agent_id: ''
     };
   },
 
@@ -32,30 +31,27 @@ const Login = React.createClass({
 
   clearForm() {
     this.setState({
-      username: '',
-      password: ''
+      agent_id: '',
     });
   },
 
   login(e) {
     e.preventDefault();
-    let { username, password } = this.state;
+    let { agent_id } = this.state;
 
     this.setState({
       submitted: true
     });
 
     Actions.login({
-      username: username,
-      password: password
+      agent_id: agent_id
     });
   },
 
   render() {
     let {
       submitted,
-      username,
-      password
+      agent_id
     } = this.state;
     let { errorMessage } = this.props;
 
@@ -67,21 +63,18 @@ const Login = React.createClass({
       <div className="login">
         <h1>Login</h1>
         <form onSubmit={ this.login } className="modal-form">
-          <label htmlFor="username">Username</label>
+          <label htmlFor="agent_id">Agent ID</label>
           <input
             type="text"
-            placeholder="Username"
-            id="username"
-            value={ username }
-            onChange={ (e) => this.setState({ username: e.target.value.trim() }) }
+            placeholder="Agent ID"
+            id="agent_id"
+            value={ agent_id }
+            onChange={ (e) => this.setState({ agent_id: e.target.value.trim() }) }
           />
-          <label htmlFor="password">Password</label>
           <input
-            type="password"
+            type="text"
             placeholder="Password"
             id="password"
-            value={ password }
-            onChange={ (e) => this.setState({ password: e.target.value }) }
           />
           <button type="submit" className="button button-primary" disabled={ submitted }>
             { submitted ? <Spinner /> : 'Sign In' }

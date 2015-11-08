@@ -21,20 +21,22 @@ module.exports = {
     }).promise();
   },
 
-  login: function(loginData) {
+  agentLogin: function(loginData) {
     return $.ajax({
       type: 'POST',
-      data: { user: loginData },
-      url: 'http://localhost:9292/login',
+      data: loginData,
+      url: 'http://localhost:9292/agent_login',
       xhrFields: { withCredentials: true },
       crossDomain: true,
       cache: false
     }).promise();
   },
 
-  logout: function(path) {
+  sellerLogin: function(loginData) {
     return $.ajax({
-      url: 'http://localhost:9292/logout',
+      type: 'POST',
+      data: { user: loginData },
+      url: 'http://localhost:9292/seller_login',
       xhrFields: { withCredentials: true },
       crossDomain: true,
       cache: false
