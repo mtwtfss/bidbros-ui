@@ -89,7 +89,7 @@ const SellerRegister = React.createClass({
             placeholder="Full name"
             id="name"
             value={ name }
-            onChange={ (e) => this.setState({ name: e.target.value.trim() }) }
+            onChange={ (e) => this.setState({ name: e.target.value }) }
           />
           <label htmlFor="email"></label>
           <input
@@ -105,7 +105,7 @@ const SellerRegister = React.createClass({
             placeholder="Phone number"
             id="phone"
             value={ phone }
-            onChange={ (e) => this.setState({ phone: e.target.value.trim() }) }
+            onChange={ (e) => this.setState({ phone: e.target.value }) }
           />
           <button type="submit" className="button button-primary" disabled={ submitted }>
             { submitted ? <Spinner /> : 'Register' }

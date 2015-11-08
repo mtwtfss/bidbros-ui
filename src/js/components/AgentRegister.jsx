@@ -81,7 +81,7 @@ const AgentRegister = React.createClass({
             placeholder="Agent ID"
             id="agent-id"
             value={ agentId }
-            onChange={ (e) => this.setState({ agentId: e.target.value.trim() }) }
+            onChange={ (e) => this.setState({ agentId: e.target.value }) }
           />
           <label htmlFor="yelp-url"></label>
           <input
@@ -89,7 +89,7 @@ const AgentRegister = React.createClass({
             placeholder="Yelp URL"
             id="yelp-url"
             value={ yelpUrl }
-            onChange={ (e) => this.setState({ yelpUrl: e.target.value.trim() }) }
+            onChange={ (e) => this.setState({ yelpUrl: e.target.value }) }
           />
           <button type="submit" className="button button-primary" disabled={ submitted }>
             { submitted ? <Spinner /> : 'Register' }

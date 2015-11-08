@@ -69,7 +69,7 @@ const AgentLogin = React.createClass({
             placeholder="Agent ID"
             id="agent-id"
             value={ agentId }
-            onChange={ (e) => this.setState({ agentId: e.target.value.trim() }) }
+            onChange={ (e) => this.setState({ agentId: e.target.value }) }
           />
           <input
             type="text"

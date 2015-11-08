@@ -62,9 +62,9 @@ const NewBid = React.createClass({
     let bid = {
       listing_id: ListingsStore.getCurrentListing().id,
       agent_id: agent.id,
-      close_price: closingPrice.trim(),
-      duration: duration.trim(),
-      commission: commission.trim()
+      close_price: closingPrice,
+      duration: duration,
+      commission: commission
     };
 
     Actions.submitBid(bid);

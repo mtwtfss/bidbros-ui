@@ -43,7 +43,7 @@ const NewListing = React.createClass({
     });
 
     let listing = {
-      listing_id: listing_id.trim(),
+      listing_id: listing_id,
       seller_id: seller.id //eslint-disable-line camelcase
     };
 

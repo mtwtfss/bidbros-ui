@@ -69,7 +69,7 @@ const SellerLogin = React.createClass({
             placeholder="Email"
             id="email"
             value={ email }
-            onChange={ (e) => this.setState({ email: e.target.value.trim() }) }
+            onChange={ (e) => this.setState({ email: e.target.value }) }
           />
           <input
             type="text"
