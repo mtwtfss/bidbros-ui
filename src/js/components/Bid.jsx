@@ -17,19 +17,29 @@ const Bid = React.createClass({
 
     return (
       <div className="bid">
-        <div className="bid-link">
-          <Link className="bid-title" to={ `/bid/${bid.id}` }>Bid { bid.id }</Link>
-        </div>
-        <div className="bid-info">
-          <div className="bided-by">
-            <span className="bid-info-item">
-              <Link to={ `/agent/${bid.agent_id}` }>Agent { bid.agent_id }</Link>
-            </span>
-            <span className="bid-info-item">
-              { timeAgo(bid.created_at) }
-            </span>
-          </div>
-        </div>
+<table className="tg">
+  <tr>
+    <td className="realtor-image" vertical-align="middle !important" rowSpan="5"> <img src="images/waldo.jpg" height="200" width="200"/> </td>
+    <td className="duration" textAlign="left"> Duration (days): </td>
+    <td className="duration-value"> {bid.duration} </td>
+  </tr>
+  <tr>
+    <td className="closingprice" textAlign="left"> Closing Price: </td>
+    <td className="closingprice-value"> {bid.closing_price} </td>
+  </tr>
+  <tr>
+    <td className="commission"> Commission: </td>
+    <td className="commission-value"> { bid.commission} </td>
+  </tr>
+  <tr>
+    <td className="review"> Reviews: </td>
+    <td className="review-value"></td>
+  </tr>
+  <tr>
+    <td className="accept"> Accept </td>
+    <td className="decline"> Decline </td>
+  </tr>
+</table>
       </div>
     );
   }
