@@ -15,10 +15,16 @@ const AgentSettings = React.createClass({
 
   render() {
     return (
-      <span className="user-settings">
-        <span>{ this.props.agent.agent_id }</span>
+
+      <span id="header">
+        <h1><a href="index.html"></a>{ this.props.agent.agent_id }</h1>
+        <div id="nav">
         <a onClick={ this.logout }>Logout</a>
+        </div>
       </span>
+
+
+
     );
   }
 });

@@ -61,19 +61,31 @@ const Listings = React.createClass({
     }
 
     return (
+
+
+                                <section id="main" className="container">
+
+                                        <section className="box special">
       <div className="content full-width">
-        <div className="listings">
-          { this.state.loading ? <Spinner /> : listings }
+        <div className="bids">
+{ this.state.loading ? <Spinner /> : listings }
         </div>
         {
           this.state.listings.length > this.state.listingRange ? (
             <nav className="pagination">
               <hr />
-              <a onClick={ this.loadMoreListings } className="load-more">Load More Listings</a>
             </nav>
           ) : null
         }
       </div>
+
+                                        </section>
+                                </section>
+
+
+
+
+
     );
   }
 });
