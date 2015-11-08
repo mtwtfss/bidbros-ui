@@ -4,30 +4,30 @@ import Reflux from 'reflux';
 import API from '../util/api';
 import Actions from '../actions/Actions';
 
-let postRangeStep = 10;
+let bidRangeStep = 10;
 
 let data = {
-  posts: [],
-  postRange: 10
+  bids: [],
+  bidRange: 10
 };
 
-const PostsStore = Reflux.createStore({
+const BidsStore = Reflux.createStore({
   listenables: Actions,
 
-  onFetchPosts() {
+  onFetchBids() {
     var _this = this;
-    API.fetchData('posts').then(function(postsData) {
-      data.posts = postsData.data;
+    API.fetchData('bids').then(function(bidsData) {
+      data.bids = bidsData.data;
       _this.trigger(data);
     }).fail(function() {
-      window.alert('Unable to fetch post data');
+      window.alert('Unable to fetch bid data');
     });
   },
 
-  onSubmitPost(postData) {
+  onSubmitBid(bidData) {
     var _this = this;
-    API.postData('post', postData).then(function(post) {
-      data.posts.unshift(post.data);
+    API.bidData('bid', bidData).then(function(bid) {
+      data.bids.unshift(bid.data);
       _this.trigger(data);
       Actions.hideModal();
     }).fail(function(error) {
@@ -35,8 +35,8 @@ const PostsStore = Reflux.createStore({
     });
   },
 
-  onExpandPostRange() {
-    data.postRange = data.postRange + postRangeStep;
+  onExpandBidRange() {
+    data.bidRange = data.bidRange + bidRangeStep;
     this.trigger(data);
   },
 
@@ -45,4 +45,4 @@ const PostsStore = Reflux.createStore({
   }
 });
 
-export default PostsStore;
+export default BidsStore;

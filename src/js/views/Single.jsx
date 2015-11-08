@@ -6,12 +6,12 @@ import Actions from '../actions/Actions';
 import { Navigation, TransitionHook } from 'react-router';
 
 import SingleStore from '../stores/SingleStore';
-import PostsStore from '../stores/PostsStore';
+import BidsStore from '../stores/BidsStore';
 import UserStore from '../stores/UserStore';
 import Spinner from '../components/Spinner';
-import Post from '../components/Post';
+import Bid from '../components/Bid';
 
-const SinglePost = React.createClass({
+const SingleBid = React.createClass({
   propTypes: {
     params: React.PropTypes.object
   },
@@ -19,59 +19,59 @@ const SinglePost = React.createClass({
   mixins: [
     Navigation,
     TransitionHook,
-    Reflux.listenTo(PostsStore, 'newPost'),
-    Reflux.listenTo(SingleStore, 'updatePost')
+    Reflux.listenTo(BidsStore, 'newBid'),
+    Reflux.listenTo(SingleStore, 'updateBid')
   ],
 
   getInitialState() {
-    let postData = SingleStore.getDefaultData();
+    let bidData = SingleStore.getDefaultData();
 
     return {
       loading: true,
-      post: postData.post
+      bid: bidData.bid
     };
   },
 
   componentDidMount() {
-    let { postId } = this.props.params;
-    Actions.fetchPost(postId);
+    let { bidId } = this.props.params;
+    Actions.fetchBid(bidId);
   },
 
   routerWillLeave() {},
 
-  newPost(data) {
-    var post = data.posts[0];
-    this.setState({ post: post });
-    this.transitionTo(`/post/${post.id}`);
+  newBid(data) {
+    var bid = data.bids[0];
+    this.setState({ bid: bid });
+    this.transitionTo(`/bid/${bid.id}`);
   },
 
-  updatePost(post) {
-    if (!post.id) {
+  updateBid(bid) {
+    if (!bid.id) {
       this.transitionTo('/404');
       return;
     }
 
-    var user = UserStore.getUser(post.user_id);
+    var user = UserStore.getUser(bid.user_id);
     if (user) {
-      post.username = user.username;
+      bid.username = user.username;
     } else {
-      post.username = 'User ' + post.user_id;
+      bid.username = 'User ' + bid.user_id;
     }
 
-    this.setState({ post: post, loading: false });
+    this.setState({ bid: bid, loading: false });
   },
 
   render() {
     let content;
-    let { loading, post } = this.state;
-    let { postId } = this.props.params;
+    let { loading, bid } = this.state;
+    let { bidId } = this.props.params;
 
     if (loading) {
       content = <Spinner />;
     } else {
       content = (
         <div>
-          <Post post={ post } key={ postId } />
+          <Bid bid={ bid } key={ bidId } />
         </div>
       );
     }
@@ -84,4 +84,4 @@ const SinglePost = React.createClass({
   }
 });
 
-export default SinglePost;
+export default SingleBid;

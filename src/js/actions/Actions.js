@@ -10,11 +10,11 @@ const Actions = Reflux.createActions([
   'register',
   'fetchUser',
   'fetchUsers',
-  // post actions
-  'fetchPost',
-  'fetchPosts',
-  'submitPost',
-  'expandPostRange',
+  // bid actions
+  'fetchBid',
+  'fetchBids',
+  'submitBid',
+  'expandBidRange',
   // modal actions
   'showModal',
   'hideModal',

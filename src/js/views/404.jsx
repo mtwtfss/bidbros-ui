@@ -3,7 +3,7 @@
 import Reflux from 'reflux';
 import React from 'react/addons';
 import Actions from '../actions/Actions';
-import PostsStore from '../stores/PostsStore';
+import BidsStore from '../stores/BidsStore';
 import { Navigation, TransitionHook } from 'react-router';
 
 // components
@@ -13,15 +13,15 @@ const uhOh = React.createClass({
   mixins: [
     Navigation,
     TransitionHook,
-    Reflux.listenTo(PostsStore, 'newPost')
+    Reflux.listenTo(BidsStore, 'newBid')
   ],
 
   routerWillLeave() {},
 
-  newPost(data) {
-    var post = data.posts[0];
-    this.setState({ post: post });
-    this.transitionTo(`/post/${post.id}`);
+  newBid(data) {
+    var bid = data.bids[0];
+    this.setState({ bid: bid });
+    this.transitionTo(`/bid/${bid.id}`);
   },
 
   render() {

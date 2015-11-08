@@ -9,11 +9,11 @@ import Actions from './actions/Actions';
 import UserStore from './stores/UserStore';
 import ModalStore from './stores/ModalStore';
 
-import Posts from './views/Posts';
+import Bids from './views/Bids';
 import Modal from './components/Modal';
 import Login from './components/Login';
 import Register from './components/Register';
-import NewPost from './components/NewPost';
+import NewBid from './components/NewBid';
 import LoginLinks from './components/LoginLinks';
 import UserSettings from './components/UserSettings';
 
@@ -82,11 +82,11 @@ let App = React.createClass({
     Actions.hideModal();
   },
 
-  newPost() {
+  newBid() {
     if (this.state.user) {
-      Actions.showModal('newpost');
+      Actions.showModal('newbid');
     } else {
-      Actions.showModal('login', 'You have to login to do that', ['newpost']);
+      Actions.showModal('login', 'You have to login to do that', ['newbid']);
     }
   },
 
@@ -106,8 +106,8 @@ let App = React.createClass({
         modalInner = <Register { ...modalProps } />; break;
       case 'login':
         modalInner = <Login { ...modalProps } />; break;
-      case 'newpost':
-        modalInner = <NewPost { ...modalProps } />; break;
+      case 'newbid':
+        modalInner = <NewBid { ...modalProps } />; break;
     }
 
     return (
@@ -128,15 +128,15 @@ let App = React.createClass({
           </div>
           <div className="float-right">
             { user ? <UserSettings user={ user } /> : (loading ? null : <LoginLinks />) }
-            <a className="newpost-link" onClick={ this.newPost }>
+            <a className="newbid-link" onClick={ this.newBid }>
               <i className="fa fa-plus-square-o"></i>
-              <span className="sr-only">New Post</span>
+              <span className="sr-only">New Bid</span>
             </a>
           </div>
         </header>
 
         <main id="content" className="full-height inner">
-          { this.props.children || <Posts /> }
+          { this.props.children || <Bids /> }
         </main>
 
         { this.getModalComponent(modal) }

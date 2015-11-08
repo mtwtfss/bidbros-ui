@@ -4,24 +4,24 @@ import Reflux from 'reflux';
 import API from '../util/api';
 import Actions from '../actions/Actions';
 
-let post = {};
+let bid = {};
 
 const SingleStore = Reflux.createStore({
   listenables: Actions,
 
-  onFetchPost(postId) {
+  onFetchBid(bidId) {
     var _this = this;
-    API.fetchData('post/' + postId).then(function(postData) {
-      post = postData.data;
-      _this.trigger(post);
+    API.fetchData('bid/' + bidId).then(function(bidData) {
+      bid = bidData.data;
+      _this.trigger(bid);
     }).fail(function() {
-      post = {};
-      _this.trigger(post);
+      bid = {};
+      _this.trigger(bid);
     });
   },
 
   getDefaultData() {
-    return post;
+    return bid;
   }
 });
 

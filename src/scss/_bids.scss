@@ -1,11 +1,11 @@
-/* Posts
+/* Bids
 ====================================== */
 
-.posts {
-  counter-reset: post;
+.bids {
+  counter-reset: bid;
 
-  .post-link:before {
-    content: counter(post);
+  .bid-link:before {
+    content: counter(bid);
     display: inline-block;
     float: right;
     padding-left: 6px;
@@ -14,20 +14,20 @@
   }
 }
 
-.post {
+.bid {
   position: relative;
-  counter-increment: post;
+  counter-increment: bid;
   background: #fff;
   & + & {
     margin-top: $small;
   }
 }
 
-.post-link {
+.bid-link {
   line-height: 1.2;
 }
 
-.post-title {
+.bid-title {
   font-family: $heading-font;
   margin-right: 0.6em;
 }
@@ -55,14 +55,14 @@
 }
 
 
-.post-info {
+.bid-info {
   margin-top: 0.2rem;
   font-size: $text-small;
 }
 
-// .posted-by {}
+// .bided-by {}
 
-.post-info-item:before {
+.bid-info-item:before {
   content: '\00b7';
   display: inline-block;
   margin: 0 0.3rem;

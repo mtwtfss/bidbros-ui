@@ -8,7 +8,7 @@ import cx from 'classnames';
 import Actions from '../actions/Actions';
 import Spinner from '../components/Spinner';
 
-const NewPost = React.createClass({
+const NewBid = React.createClass({
   propTypes: {
     user: React.PropTypes.object,
     errorMessage: React.PropTypes.string
@@ -26,7 +26,7 @@ const NewPost = React.createClass({
     };
   },
 
-  submitPost(e) {
+  submitBid(e) {
     e.preventDefault();
 
     let { title, link } = this.state;
@@ -50,13 +50,13 @@ const NewPost = React.createClass({
       submitted: true
     });
 
-    let post = {
+    let bid = {
       title: title.trim(),
       url: link,
       user_id: user.id //eslint-disable-line camelcase
     };
 
-    Actions.submitPost(post);
+    Actions.submitBid(bid);
   },
 
   render() {
@@ -81,24 +81,24 @@ const NewPost = React.createClass({
     );
 
     return (
-      <div className="newpost">
-        <h1>New Post</h1>
-        <form onSubmit={ this.submitPost } className="modal-form">
-          <label htmlFor="newpost-title">Title</label>
+      <div className="newbid">
+        <h1>New Bid</h1>
+        <form onSubmit={ this.submitBid } className="modal-form">
+          <label htmlFor="newbid-title">Title</label>
           <input
             type="text"
             className={ titleInputCx }
             placeholder="Title"
-            id="newpost-title"
+            id="newbid-title"
             value={ title }
             onChange={ (e) => this.setState({ title: e.target.value }) }
           />
-          <label htmlFor="newpost-url">Link</label>
+          <label htmlFor="newbid-url">Link</label>
           <input
             type="text"
             className={ linkInputCx }
             placeholder="Link"
-            id="newpost-url"
+            id="newbid-url"
             value={ link }
             onChange={ (e) => this.setState({ link: e.target.value.trim() }) }
           />
@@ -112,4 +112,4 @@ const NewPost = React.createClass({
   }
 });
 
-export default NewPost;
+export default NewBid;
