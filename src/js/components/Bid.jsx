@@ -15,11 +15,13 @@ const Bid = React.createClass({
     let agent = this.props.agent;
     let bid = this.props.bid;
 
+    var imgStyle = { verticalAlign: 'middle' };
+
     return (
       <div className="bid">
 <table className="tg">
   <tr>
-    <td className="realtor-image" vertical-align="middle !important" rowSpan="5"> <img src="images/waldo.jpg" height="200" width="200"/> </td>
+    <td className="realtor-image" style={ imgStyle } rowSpan="5"> <img src="images/waldo.jpg" height="200" width="200"/> </td>
     <td className="duration" textAlign="left"> Duration (days): </td>
     <td className="duration-value"> {bid.duration} </td>
   </tr>
