@@ -20,7 +20,7 @@ const BidsStore = Reflux.createStore({
     API.fetchData('bids?seller_id=' + SellerStore.getCurrentSeller().id).then(function(bidsData) {
       data.bids = bidsData.data;
       _this.trigger(data);
-    }).fail(function() {
+    }).fail(function(response) {
       window.alert('Unable to fetch bid data');
     });
   },

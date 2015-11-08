@@ -15,12 +15,16 @@ const SellerSettings = React.createClass({
 
   render() {
     return (
-      <span className="user-settings">
-        <span>{ this.props.seller.full_name }</span>
+      <span id="header">
+        <h1><a href="index.html"></a>{ this.props.seller.full_name }</h1>
+        <div id="nav">
         <a onClick={ this.logout }>Logout</a>
+        </div>
       </span>
     );
   }
 });
 
 export default SellerSettings;
+
+
