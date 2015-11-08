@@ -8,6 +8,7 @@ let listingRangeStep = 10;
 
 let data = {
   listings: [],
+  currentListing: null,
   listingRange: 10
 };
 
@@ -24,9 +25,14 @@ const ListingsStore = Reflux.createStore({
     });
   },
 
+  onSetCurrentListing(listing) {
+    data.currentListing = listing;
+    this.trigger(data);
+  },
+
   onSubmitListing(listingData) {
     var _this = this;
-    API.listingData('listing', listingData).then(function(listing) {
+    API.postData('listing', listingData).then(function(listing) {
       data.listings.unshift(listing.data);
       _this.trigger(data);
       Actions.hideModal();
@@ -42,6 +48,10 @@ const ListingsStore = Reflux.createStore({
 
   getDefaultData() {
     return data;
+  },
+
+  getCurrentListing() {
+    return data.currentListing;
   }
 });
 

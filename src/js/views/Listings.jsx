@@ -6,7 +6,6 @@ import Actions from '../actions/Actions';
 import { Navigation, TransitionHook } from 'react-router';
 
 import ListingsStore from '../stores/ListingsStore';
-import AgentStore from '../stores/AgentStore';
 import Spinner from '../components/Spinner';
 import Listing from '../components/Listing';
 
@@ -38,17 +37,6 @@ const Listings = React.createClass({
   routerWillLeave() {},
 
   updateListings(listingsData) {
-    var agents = AgentStore.getAgents();
-    listingsData.listings.forEach(function(listings) {
-      var agent = agents[listings.agent_id];
-
-      if (agent) {
-        listings.agentname = agents[listings.agent_id].agentname;
-      } else {
-        listings.agentname = 'Agent ' + listings.agent_id;
-      }
-    });
-
     this.setState({
       loading: false,
       listings: listingsData.listings,

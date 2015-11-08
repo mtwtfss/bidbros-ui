@@ -7,6 +7,7 @@ import { Link } from 'react-router';
 import Actions from './actions/Actions';
 
 import AgentStore from './stores/AgentStore';
+import ListingsStore from './stores/ListingsStore';
 import SellerStore from './stores/SellerStore';
 import ModalStore from './stores/ModalStore';
 
@@ -15,6 +16,7 @@ import Modal from './components/Modal';
 import AgentLogin from './components/AgentLogin';
 import SellerLogin from './components/SellerLogin';
 import Register from './components/Register';
+import NewListing from './components/NewListing';
 import NewBid from './components/NewBid';
 import LoginLinks from './components/LoginLinks';
 import AgentSettings from './components/AgentSettings';
@@ -46,6 +48,7 @@ let App = React.createClass({
     return {
       loading: true,
       agent: agentData.currentAgent,
+      listing: ListingsStore.currentListing,
       seller: sellerData.currentSeller,
       modal: ModalStore.getDefaultData(),
       muiTheme: ThemeManager.getMuiTheme(LightRawTheme)
@@ -95,11 +98,11 @@ let App = React.createClass({
     Actions.hideModal();
   },
 
-  newBid() {
-    if (this.state.agent) {
-      Actions.showModal('newbid');
+  newListing() {
+    if (this.state.seller) {
+      Actions.showModal('newlisting');
     } else {
-      Actions.showModal('agentlogin', 'You have to be logged in as an Agent to do that', ['newbid']);
+      Actions.showModal('agentlogin', 'You have to be logged in as a Seller to do that', ['newlisting']);
     }
   },
 
@@ -119,6 +122,7 @@ let App = React.createClass({
     let modalInner;
     let modalProps = {
       agent: this.state.agent,
+      listing: this.state.listing,
       seller: this.state.seller,
       errorMessage: modal.errorMessage
     };
@@ -132,6 +136,8 @@ let App = React.createClass({
         modalInner = <AgentLogin { ...modalProps } />; break;
       case 'sellerlogin':
         modalInner = <SellerLogin { ...modalProps } />; break;
+      case 'newlisting':
+        modalInner = <NewListing { ...modalProps } />; break;
       case 'newbid':
         modalInner = <NewBid { ...modalProps } />; break;
     }
@@ -144,7 +150,14 @@ let App = React.createClass({
   },
 
   render() {
-    let { agent, seller, modal, loading } = this.state;
+    let { agent, listing, seller, modal, loading } = this.state;
+
+    var newListingButton = (
+      <a className="newlisting-link" onClick={ this.newListing }>
+        <i className="fa fa-plus-square-o"></i>
+        <span className="sr-only">New Listing</span>
+      </a>
+    );
 
     return (
       <div className="wrapper full-height">
@@ -155,6 +168,7 @@ let App = React.createClass({
             { agent ? <AgentSettings agent={ agent } /> : null }
             { seller ? <SellerSettings seller={ seller } /> : null }
             { (!agent && !seller) ? (loading ? null : <LoginLinks />) : null }
+            { seller ? newListingButton : null }
           </div>
         </header>
 

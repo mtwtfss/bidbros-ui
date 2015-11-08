@@ -26,7 +26,7 @@ const BidsStore = Reflux.createStore({
 
   onSubmitBid(bidData) {
     var _this = this;
-    API.bidData('bid', bidData).then(function(bid) {
+    API.postData('bid', bidData).then(function(bid) {
       data.bids.unshift(bid.data);
       _this.trigger(data);
       Actions.hideModal();

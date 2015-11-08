@@ -3,6 +3,7 @@
 import React from 'react/addons';
 import Reflux from 'reflux';
 import { Navigation } from 'react-router';
+import ListingsStore from '../stores/ListingsStore';
 import cx from 'classnames';
 
 import Actions from '../actions/Actions';
@@ -21,27 +22,35 @@ const NewBid = React.createClass({
   getInitialState() {
     return {
       submitted: false,
-      title: '',
-      link: ''
+      closingPrice: '',
+      duration: '',
+      commission: ''
     };
   },
 
   submitBid(e) {
     e.preventDefault();
 
-    let { title, link } = this.state;
+    let { closingPrice, duration, commission } = this.state;
     let { agent } = this.props;
 
-    if (!title) {
+    if (!closingPrice) {
       this.setState({
-        highlight: 'title'
+        highlight: 'closingPrice'
       });
       return;
     }
 
-    if (!link) {
+    if (!duration) {
       this.setState({
-        highlight: 'link'
+        highlight: 'duration'
+      });
+      return;
+    }
+
+    if (!commission) {
+      this.setState({
+        highlight: 'commission'
       });
       return;
     }
@@ -51,9 +60,11 @@ const NewBid = React.createClass({
     });
 
     let bid = {
-      title: title.trim(),
-      url: link,
-      agent_id: agent.id //eslint-disable-line camelcase
+      listing_id: ListingsStore.getCurrentListing().id,
+      agent_id: agent.id,
+      close_price: closingPrice.trim(),
+      duration: duration.trim(),
+      commission: commission.trim()
     };
 
     Actions.submitBid(bid);
@@ -63,16 +74,21 @@ const NewBid = React.createClass({
     let {
       submitted,
       highlight,
-      title,
-      link
+      closingPrice,
+      duration,
+      commission
     } = this.state;
 
-    let titleInputCx = cx('panel-input', {
-      'input-error': highlight === 'title'
+    let closingPriceInputCx = cx('panel-input', {
+      'input-error': highlight === 'closingPrice'
     });
 
-    let linkInputCx = cx('panel-input', {
-      'input-error': highlight === 'link'
+    let durationInputCx = cx('panel-input', {
+      'input-error': highlight === 'duration'
+    });
+
+    let commissionInputCx = cx('panel-input', {
+      'input-error': highlight === 'commission'
     });
 
     let errorMessage = this.props.errorMessage;
@@ -84,23 +100,32 @@ const NewBid = React.createClass({
       <div className="newbid">
         <h1>New Bid</h1>
         <form onSubmit={ this.submitBid } className="modal-form">
-          <label htmlFor="newbid-title">Title</label>
+          <label htmlFor="newbid-closingPrice">Closing Price</label>
           <input
             type="text"
-            className={ titleInputCx }
-            placeholder="Title"
-            id="newbid-title"
-            value={ title }
-            onChange={ (e) => this.setState({ title: e.target.value }) }
+            className={ closingPriceInputCx }
+            placeholder="Closing Price"
+            id="newbid-closingPrice"
+            value={ closingPrice }
+            onChange={ (e) => this.setState({ closingPrice: e.target.value }) }
           />
-          <label htmlFor="newbid-url">Link</label>
+          <label htmlFor="newbid-duration">Duration</label>
           <input
             type="text"
-            className={ linkInputCx }
-            placeholder="Link"
-            id="newbid-url"
-            value={ link }
-            onChange={ (e) => this.setState({ link: e.target.value.trim() }) }
+            className={ durationInputCx }
+            placeholder="Duration"
+            id="newbid-duration"
+            value={ duration }
+            onChange={ (e) => this.setState({ duration: e.target.value }) }
+          />
+          <label htmlFor="newbid-commission">Commission</label>
+          <input
+            type="text"
+            className={ commissionInputCx }
+            placeholder="Commission"
+            id="newbid-commission"
+            value={ commission }
+            onChange={ (e) => this.setState({ commission: e.target.value }) }
           />
           <button type="submit" className="button button-primary" disabled={ submitted }>
             { submitted ? <Spinner /> : 'Submit' }

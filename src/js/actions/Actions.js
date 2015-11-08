@@ -18,8 +18,9 @@ const Actions = Reflux.createActions([
   // listing actions
   'fetchListing',
   'fetchListings',
-  'submitBid',
-  'expandBidRange',
+  'submitListing',
+  'setCurrentListing',
+  'expandListingRange',
   // seller actions
   'sellerLogin',
   'sellerLogout',
