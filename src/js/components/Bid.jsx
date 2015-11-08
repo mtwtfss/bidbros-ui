@@ -25,7 +25,7 @@ const Bid = React.createClass({
   </tr>
   <tr>
     <td className="closingprice" textAlign="left"> Closing Price: </td>
-    <td className="closingprice-value"> {bid.closing_price} </td>
+    <td className="closingprice-value"> ${bid.close_price} </td>
   </tr>
   <tr>
     <td className="commission"> Commission: </td>
