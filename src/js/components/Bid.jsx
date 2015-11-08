@@ -7,13 +7,20 @@ import timeAgo from '../util/timeAgo';
 
 const Bid = React.createClass({
   propTypes: {
-    agent: React.PropTypes.object,
     bid: React.PropTypes.object
   },
 
+  accept() {
+    Actions.acceptBid(this.props.bid.id);
+  },
+
+  decline() {
+    Actions.declineBid(this.props.bid.id);
+  },
+
   render() {
-    let agent = this.props.agent;
     let bid = this.props.bid;
+    let agent = bid.agent;
 
     var imgStyle = { verticalAlign: 'middle' };
 
@@ -23,11 +30,11 @@ const Bid = React.createClass({
   <tr>
     <td className="realtor-image" style={ imgStyle } rowSpan="5"> <img src="images/waldo.jpg" height="200" width="200"/> </td>
     <td className="duration" textAlign="left"> Duration (days): </td>
-    <td className="duration-value"> {bid.duration} </td>
+    <td className="duration-value"> {bid.duration} ({agent.duration_min}-{agent.duration_max})</td>
   </tr>
   <tr>
     <td className="closingprice" textAlign="left"> Closing Price: </td>
-    <td className="closingprice-value"> ${bid.close_price} </td>
+    <td className="closingprice-value"> ${bid.close_price} ({agent.profit_range_min}-{agent.profit_range_max})</td>
   </tr>
   <tr>
     <td className="commission"> Commission: </td>
@@ -38,8 +45,8 @@ const Bid = React.createClass({
     <td className="review-value"></td>
   </tr>
   <tr>
-    <td className="accept"> Accept </td>
-    <td className="decline"> Decline </td>
+    <td className="accept" onClick={ this.accept }> Accept </td>
+    <td className="decline" onClick={ this.decline }> Decline </td>
   </tr>
 </table>
       </div>

@@ -14,11 +14,16 @@ const Actions = Reflux.createActions([
   'fetchBid',
   'fetchBids',
   'submitBid',
+  'getCurrentBid',
+  'setCurrentBid',
+  'acceptBid',
+  'declineBid',
   'expandBidRange',
   // listing actions
   'fetchListing',
   'fetchListings',
   'submitListing',
+  'getCurrentListing',
   'setCurrentListing',
   'expandListingRange',
   // seller actions

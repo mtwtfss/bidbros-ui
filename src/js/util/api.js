@@ -10,6 +10,17 @@ module.exports = {
     }).promise();
   },
 
+  putData: function(path, data) {
+    return $.ajax({
+      type: 'PUT',
+      data: data,
+      url: 'http://localhost:9292/' + path,
+      xhrFields: { withCredentials: true },
+      crossDomain: true,
+      cache: false
+    }).promise();
+  },
+
   postData: function(path, data) {
     return $.ajax({
       type: 'POST',

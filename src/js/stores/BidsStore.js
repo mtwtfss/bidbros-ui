@@ -9,6 +9,7 @@ let bidRangeStep = 10;
 
 let data = {
   bids: [],
+  currentBid: null,
   bidRange: 10
 };
 
@@ -39,6 +40,33 @@ const BidsStore = Reflux.createStore({
   onExpandBidRange() {
     data.bidRange = data.bidRange + bidRangeStep;
     this.trigger(data);
+  },
+
+  onSetCurrentBid(bid) {
+    data.currentBid = bid;
+    this.trigger(data);
+  },
+
+  onAcceptBid(bidId) {
+    API.putData('bid/' + bidId, { accepted: 1 }).then(function(bid) {
+      Actions.fetchBids();
+      Actions.hideModal();
+    }).fail(function(error) {
+      Actions.modalError(error.responseText);
+    });
+  },
+
+  onDeclineBid(bidId) {
+    API.putData('bid/' + bidId, { accepted: -1 }).then(function(bid) {
+      Actions.fetchBids();
+      Actions.hideModal();
+    }).fail(function(error) {
+      Actions.modalError(error.responseText);
+    });
+  },
+
+  getCurrentBid() {
+    return data.currentBid;
   },
 
   getDefaultData() {

@@ -107,14 +107,6 @@ let App = React.createClass({
     }
   },
 
-  newListing() {
-    if (this.state.seller) {
-      Actions.showModal('newlisting');
-    } else {
-      Actions.showModal('sellerlogin', 'You have to be logged in as a Seller to do that', ['newlisting']);
-    }
-  },
-
   getModalComponent(modal) {
     if (!modal.type) {
       return null;
